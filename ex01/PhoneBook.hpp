@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 14:24:38 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/10/29 18:06:24 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/11/03 19:57:40 by xshel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,22 @@
 # define PHONEBOOK_HPP
 
 # include <iostream>
+#include <stdlib.h>
 # include "./Contact.hpp"
 
-// void    add_contact();
-// void    search_contact();
 
 class PhoneBook
 {
-    public:
+    private:
         Contact contacts[8];
         int     nb_contacts;
+    public:
         PhoneBook();
-        void    add_contact();
+        // ~PhoneBook();
+        int    add_contact();
         void    search_contact(PhoneBook phonebook);
+        int    is_number(std::string str, std::string input);
+        void    welcome();
 };
 
 

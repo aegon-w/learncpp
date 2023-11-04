@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 16:58:28 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/10/29 16:03:29 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:29:43 by xshel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ class Contact
         std::string phone_number;
         std::string darkest_secret;
     public:
+        Contact();
+        // ~Contact();
         std::string get_first_name();
         std::string get_last_name();
         std::string get_nickname();
@@ -34,10 +36,9 @@ class Contact
         void    set_first_name(std::string first_name);
         void    set_last_name(std::string last_name);
         void    set_nickname(std::string nickname);
-        void    set_index(std::string index);
+        void    set_index(int index);
         void    set_phone_number(std::string phone_number);
         void    set_darkest_secret(std::string darkest_secret);
-        Contact();
 };
 
 #endif

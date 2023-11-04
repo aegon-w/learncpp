@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 16:58:31 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/10/29 18:39:30 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:29:38 by xshel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 
 Contact::Contact()
 {
-    this->first_name = "";
-    this->last_name = "";
-    this->nickname = "";
-    this->index = "";
-    this->phone_number = "";
-    this->darkest_secret = "";
 }
+// Contact::~Contact()
+// {
+//     std::cout << "Contact destroyed ☠" << std::endl;
+// }
 
 std::string Contact::get_first_name()
 {
@@ -59,7 +57,7 @@ void    Contact::set_nickname(std::string nickname)
 {
     this->nickname = nickname;
 }
-void    Contact::set_index(std::string index)
+void    Contact::set_index(int index)
 {
     this->index = index;
 }

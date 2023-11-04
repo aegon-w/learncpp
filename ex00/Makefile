@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+         #
+#    By: xshel <xshel@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/29 14:18:16 by m-boukel          #+#    #+#              #
-#    Updated: 2023/10/29 14:19:04 by m-boukel         ###   ########.fr        #
+#    Updated: 2023/11/03 09:31:24 by xshel            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = megaphone
 SRC = megaphone.cpp
 OBJ = $(SRC:.cpp=.o)
