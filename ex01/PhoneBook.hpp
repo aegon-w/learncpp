@@ -6,7 +6,7 @@
 /*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 14:24:38 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/11/03 19:57:40 by xshel            ###   ########.fr       */
+/*   Updated: 2023/11/05 12:30:03 by xshel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class PhoneBook
         int     nb_contacts;
     public:
         PhoneBook();
-        // ~PhoneBook();
+        ~PhoneBook();
         int    add_contact();
         void    search_contact(PhoneBook phonebook);
         int    is_number(std::string str, std::string input);

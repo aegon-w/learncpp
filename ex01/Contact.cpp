@@ -6,7 +6,7 @@
 /*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 16:58:31 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/11/04 16:12:47 by xshel            ###   ########.fr       */
+/*   Updated: 2023/11/05 12:30:21 by xshel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,9 @@
 Contact::Contact()
 {
 }
-// Contact::~Contact()
-// {
-//     std::cout << "Contact destroyed ☠" << std::endl;
-// }
+Contact::~Contact()
+{
+}
 
 std::string Contact::get_first_name()
 {

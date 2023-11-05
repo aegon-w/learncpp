@@ -6,7 +6,7 @@
 /*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 16:58:28 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/11/04 16:12:50 by xshel            ###   ########.fr       */
+/*   Updated: 2023/11/05 12:30:06 by xshel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Contact
         std::string darkest_secret;
     public:
         Contact();
-        // ~Contact();
+        ~Contact();
         std::string get_first_name();
         std::string get_last_name();
         std::string get_nickname();
