@@ -6,7 +6,7 @@
 /*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 14:25:44 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/11/05 12:13:42 by xshel            ###   ########.fr       */
+/*   Updated: 2023/11/07 16:24:58 by xshel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int    PhoneBook::is_number(std::string str, std::string input)
     int i;
 
     i = 0;
-    if (input.empty())
+    if (!input.empty() || input == "")
     {
         std::cout << "No " << str << " entered" << std::endl;
         return  1;
@@ -40,13 +40,11 @@ int    PhoneBook::add_contact()
     std::string input;
     int current_index;
     current_index = this->nb_contacts % 8;
-    std::cout << nb_contacts << "-----------"<< std::endl;
     this->contacts[current_index].set_index(current_index);
     std::cout << "Enter first name: ";
     if (!(std::getline(std::cin, input)))
         return 1;
-    if (input.empty())
-    {
+    if (!input.empty() || input == "")    {
         std::cout << "No first name entered" << std::endl;
         return 1;
     }
@@ -54,7 +52,7 @@ int    PhoneBook::add_contact()
     std::cout << "Enter last name: ";
     if (!(std::getline(std::cin, input)))
         return 1;
-    if (input.empty())
+    if (!input.empty() || input == "")
     {
         std::cout << "No last name entered" << std::endl;
         return 1;
@@ -63,7 +61,7 @@ int    PhoneBook::add_contact()
     std::cout << "Enter nickname: ";
     if (!(std::getline(std::cin, input)))
         return 1;
-    if (input.empty())
+    if (!input.empty() || input == "")
     {
         std::cout << "No nickname entered" << std::endl;
         return 1;
@@ -80,7 +78,7 @@ int    PhoneBook::add_contact()
     std::cout << "Enter darkest secret : ";
     if (!(std::getline(std::cin, input)))
         return 1;
-    if (input.empty())
+    if (!input.empty() || input == "")
     {
         std::cout << "No darkest secret entered" << std::endl;
         return 1;
