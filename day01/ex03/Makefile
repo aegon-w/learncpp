@@ -5,22 +5,22 @@
 #                                                     +:+ +:+         +:+      #
 #    By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/07 09:55:11 by xshel             #+#    #+#              #
-#    Updated: 2023/11/09 16:21:45 by m-boukel         ###   ########.fr        #
+#    Created: 2023/11/09 17:37:42 by m-boukel          #+#    #+#              #
+#    Updated: 2023/11/10 17:15:10 by m-boukel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = Zombie
-SRC = Zombie.cpp main.cpp newZombie.cpp randomChump.cpp
+FLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3
+NAME = dead
+SRC = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
-	
+
 %.o: %.cpp
 	$(CC) $(FLAGS) -c $< -o $@
 
@@ -29,7 +29,7 @@ clean:
 
 fclean: clean
 	rm -rf $(NAME)
-	
+
 re: fclean all
 
 .PHONY: all clean fclean re

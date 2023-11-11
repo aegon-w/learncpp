@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 16:04:34 by xshel             #+#    #+#             */
-/*   Updated: 2023/11/07 17:38:34 by xshel            ###   ########.fr       */
+/*   Updated: 2023/11/09 16:20:28 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ public:
 };
 
 Zombie* newZombie(std::string name);
+void randomChump(std::string name);
 
 #endif

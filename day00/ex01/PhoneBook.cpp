@@ -3,22 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 14:25:44 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/11/07 16:24:58 by xshel            ###   ########.fr       */
+/*   Updated: 2023/11/11 13:08:02 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./PhoneBook.hpp"
 #include <iomanip>
+#include <cstring>
 
 int    PhoneBook::is_number(std::string str, std::string input)
 {
     int i;
 
     i = 0;
-    if (!input.empty() || input == "")
+    while (std::isspace(input[0]))
+        input.erase(input.begin());
+    if (input.empty())
     {
         std::cout << "No " << str << " entered" << std::endl;
         return  1;
@@ -35,38 +38,51 @@ int    PhoneBook::is_number(std::string str, std::string input)
     return 0;
 }
 
+
 int    PhoneBook::add_contact()
 {
     std::string input;
     int current_index;
     current_index = this->nb_contacts % 8;
+    
     this->contacts[current_index].set_index(current_index);
+/*-------------------------------------------------------------------------*/
     std::cout << "Enter first name: ";
-    if (!(std::getline(std::cin, input)))
+    if(!(std::getline(std::cin, input)))
         return 1;
-    if (!input.empty() || input == "")    {
+    while (std::isspace(input[0]))
+        input.erase(input.begin());
+    if (input.empty() == true)
+    {
         std::cout << "No first name entered" << std::endl;
         return 1;
     }
     this->contacts[current_index].set_first_name(input);
+/*-------------------------------------------------------------------------*/
     std::cout << "Enter last name: ";
     if (!(std::getline(std::cin, input)))
         return 1;
-    if (!input.empty() || input == "")
+    while (std::isspace(input[0]))
+        input.erase(input.begin());
+    if (input.empty())
     {
         std::cout << "No last name entered" << std::endl;
         return 1;
     }
     this->contacts[current_index].set_last_name(input);
+/*-------------------------------------------------------------------------*/
     std::cout << "Enter nickname: ";
     if (!(std::getline(std::cin, input)))
         return 1;
-    if (!input.empty() || input == "")
+    while (std::isspace(input[0]))
+        input.erase(input.begin());
+    if (input.empty())
     {
         std::cout << "No nickname entered" << std::endl;
         return 1;
     }
     this->contacts[current_index].set_nickname(input);
+/*-------------------------------------------------------------------------*/
     std::cout << "Enter phone number: ";
     if (!(std::getline(std::cin, input)))
         return 1;
@@ -75,15 +91,19 @@ int    PhoneBook::add_contact()
         return 1;
     }
     this->contacts[current_index].set_phone_number(input);
+/*-------------------------------------------------------------------------*/
     std::cout << "Enter darkest secret : ";
     if (!(std::getline(std::cin, input)))
         return 1;
-    if (!input.empty() || input == "")
+    while (std::isspace(input[0]))
+        input.erase(input.begin());
+    if (input.empty())
     {
         std::cout << "No darkest secret entered" << std::endl;
         return 1;
     }
     this->contacts[current_index].set_darkest_secret(input);
+/*-------------------------------------------------------------------------*/
     this->nb_contacts++;
     return 0;
 }
