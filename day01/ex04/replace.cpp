@@ -6,7 +6,7 @@
 /*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:40:49 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/11/10 17:09:40 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/11/19 16:51:03 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,13 @@ void Replace::replace(std::string filename,std::string s1, std::string s2)
   }
 
   std::string line;
-  while (std::getline(ifs, line))
+  while (std::getline(ifs, line) && !ifs.eof())
   {
     while (line.find(s1) != std::string::npos)
     {
-      line.erase(line.find(s1), s1.length());
-      line.insert(line.find(s1), s2);
+      std::size_t pos = line.find(s1);
+      line.erase(pos, s1.length());
+      line.insert(pos, s2);
     }
     ofs << line << std::endl;
   }

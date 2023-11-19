@@ -6,7 +6,7 @@
 /*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:45:23 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/11/10 17:13:00 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/11/19 15:32:17 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main()
 {
-    Zombie *zombies = zombieHorde(-1, "clara");
+    Zombie *zombies = zombieHorde(5, "clara");
     delete [] zombies;
     return (0);
 }

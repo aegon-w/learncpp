@@ -6,7 +6,7 @@
 /*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:26:04 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/11/09 17:36:36 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/11/19 15:36:24 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int main()
     std::cout << "• The memory address held by stringREF is: " << &stringREF << std::endl;
     std::cout << std::endl;
     std::cout << "• The string variable is: " << string << std::endl;
-    std::cout << "• The stringPTR is: " << *stringPTR << std::endl;
+    std::cout << "• The stringPTR is: " << stringPTR << std::endl;
     std::cout << "• The stringREF is: " << stringREF << std::endl;
     return (0);
 }

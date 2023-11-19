@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: xshel <xshel@student.42.fr>                +#+  +:+       +#+         #
+#    By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/10/29 15:02:20 by m-boukel          #+#    #+#              #
-#    Updated: 2023/11/03 09:31:16 by xshel            ###   ########.fr        #
+#    Created: 2023/11/12 14:39:31 by m-boukel          #+#    #+#              #
+#    Updated: 2023/11/12 14:40:51 by m-boukel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = Phonebook
-SRC = PhoneBook.cpp Contact.cpp main.cpp
+FLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
+NAME = Fixed
+SRC = Fixed.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
@@ -32,4 +32,5 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: clean fclean re
+.PHONY: clean fclean re all
+	

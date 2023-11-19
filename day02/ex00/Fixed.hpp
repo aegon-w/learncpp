@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/29 14:24:38 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/11/11 11:52:17 by m-boukel         ###   ########.fr       */
+/*   Created: 2023/11/19 13:14:13 by m-boukel          #+#    #+#             */
+/*   Updated: 2023/11/19 13:16:30 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef FIXED_H
+# define FIXED_H
 
-# include <iostream>
-#include <stdlib.h>
-# include "./Contact.hpp"
+#include <iostream>
 
 
-class PhoneBook
+class   Fixed
 {
-    private:
-        Contact contacts[8];
-        int     nb_contacts;
+    private :
+        int                fixed_point;
+        static const int   fractional_bits = 8; 
     public:
-        PhoneBook();
-        ~PhoneBook();
-        int    add_contact();
-        void    search_contact(PhoneBook phonebook);
-        int    is_number(std::string str, std::string input);
-        void    welcome();
+        Fixed();
+        ~Fixed();
+        Fixed(Fixed const &f);
+        Fixed &operator=(Fixed const &f);
+        int getRawBits() const;
+        void setRawBits(int const raw);
 };
+
 
 
 #endif

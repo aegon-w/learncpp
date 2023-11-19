@@ -6,14 +6,15 @@
 /*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 13:49:27 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/11/10 14:16:00 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/11/19 15:59:28 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
 
-HumanB::HumanB(std::string name) : _name(name)
+HumanB::HumanB(std::string name)
 {
+    this->_name = name;
 }
 
 HumanB::~HumanB()
