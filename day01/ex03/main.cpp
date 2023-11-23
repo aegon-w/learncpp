@@ -6,7 +6,7 @@
 /*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:39:33 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/11/19 15:57:28 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/11/20 10:44:36 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int main()
         bob.attack();
     }
     {
-        Weapon club = Weapon("crude spiked club");
+       Weapon club = Weapon("crude spiked club");
         HumanB jim("Jim");
         jim.setWeapon(club);
         jim.attack();

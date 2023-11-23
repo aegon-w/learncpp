@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/19 13:31:37 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/11/23 13:56:14 by m-boukel         ###   ########.fr       */
+/*   Created: 2023/11/23 13:45:28 by m-boukel          #+#    #+#             */
+/*   Updated: 2023/11/23 13:56:10 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define FIXED_H
 
 #include <iostream>
-#include <cmath>
-
 
 class   Fixed
 {
@@ -33,9 +31,29 @@ class   Fixed
         int toInt() const;
         int getRawBits() const;
         void setRawBits(int const raw);
+
+        bool operator>(Fixed const &f) const;
+        bool operator<(Fixed const &f) const;
+        bool operator>=(Fixed const &f) const;
+        bool operator<=(Fixed const &f) const;
+        bool operator==(Fixed const &f) const;
+        bool operator!=(Fixed const &f) const;
+
+        Fixed operator+(Fixed const &f) const;
+        Fixed operator-(Fixed const &f) const;
+        Fixed operator*(Fixed const &f) const;
+        Fixed operator/(Fixed const &f) const;
+        
+        Fixed &operator++();
+        Fixed operator++(int);
+        Fixed &operator--();
+        Fixed operator--(int);
+        static Fixed &min(Fixed &f1, Fixed &f2);
+        static Fixed &max(Fixed &f1, Fixed &f2);
+        static Fixed const &min(Fixed const &f1, Fixed const &f2);
+        static Fixed const &max(Fixed const &f1, Fixed const &f2);
 };
+
 std::ostream &operator<<(std::ostream &o, Fixed const &f);
-
-
 
 #endif
