@@ -6,7 +6,7 @@
 /*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 13:45:28 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/11/23 13:56:10 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/11/24 12:46:53 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FIXED_H
 
 #include <iostream>
+#include <cmath>
 
 class   Fixed
 {

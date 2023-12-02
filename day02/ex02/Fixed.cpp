@@ -6,7 +6,7 @@
 /*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 13:54:45 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/11/23 13:59:13 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/11/24 12:47:41 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Fixed::Fixed(int const n) : fixed_point(n << fractional_bits)
     std::cout << "Int constructor called" << std::endl;
 }
 
-Fixed::Fixed(float const f) : fixed_point(f * (1 << fractional_bits))
+Fixed::Fixed(float const f) : fixed_point(roundf(f * (1 << fractional_bits)))
 {
     std::cout << "Float constructor called" << std::endl;
 }
