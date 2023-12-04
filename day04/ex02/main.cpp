@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 14:54:14 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/12/04 14:54:15 by m-boukel         ###   ########.fr       */
+/*   Created: 2023/12/04 14:53:09 by m-boukel          #+#    #+#             */
+/*   Updated: 2023/12/04 21:01:35 by xshel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@
 
 int main( void )
 {
-    // const AAnimal d;
+
+    // Animal* meta = new Animal();
     
     const Animal* j = new Dog();
     const Animal* i = new Cat();
@@ -38,7 +39,7 @@ int main( void )
         Dog tmp = basic;
     }
 
-    const  Animal* animals[4] = { new Dog(), new Dog(), new Cat(), new Cat() };
+    const Animal* animals[4] = { new Dog(), new Dog(), new Cat(), new Cat() };
     for ( int i = 0; i < 4; i++ ) {
         delete animals[i];
     }

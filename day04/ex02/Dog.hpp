@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 14:54:10 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/12/04 14:54:11 by m-boukel         ###   ########.fr       */
+/*   Created: 2023/12/04 14:53:03 by m-boukel          #+#    #+#             */
+/*   Updated: 2023/12/04 20:45:43 by xshel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 
 #include <iostream>
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Dog : public Animal
 {
+    private:
+        Brain *brain;
     public:
         Dog();
         Dog(const Dog &obj);

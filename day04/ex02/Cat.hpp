@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 14:54:01 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/12/04 14:54:02 by m-boukel         ###   ########.fr       */
+/*   Created: 2023/12/04 14:52:55 by m-boukel          #+#    #+#             */
+/*   Updated: 2023/12/04 20:34:22 by xshel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 
 #include <iostream>
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Cat : public Animal
 {
+    private:
+        Brain *brain;
     public:
         Cat();
         Cat(const Cat &obj);
