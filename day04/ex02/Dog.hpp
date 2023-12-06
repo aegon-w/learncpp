@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 14:53:03 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/12/04 20:45:43 by xshel            ###   ########.fr       */
+/*   Updated: 2023/12/05 17:29:32 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class Dog : public Animal
         Dog(const Dog &obj);
         Dog &operator=(const Dog &obj);
         ~Dog();
+        Brain* getBrain() const;
         void makeSound() const;
 };
 

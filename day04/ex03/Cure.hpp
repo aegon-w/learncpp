@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 14:52:55 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/12/05 17:30:20 by m-boukel         ###   ########.fr       */
+/*   Created: 2023/12/05 14:13:42 by m-boukel          #+#    #+#             */
+/*   Updated: 2023/12/05 14:29:12 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-#define CAT_HPP
+#ifndef CURE_HPP
+# define CURE_HPP
 
-#include <iostream>
-#include "Animal.hpp"
-#include "Brain.hpp"
+# include <iostream>
+# include "AMateria.hpp"
+# include "ICharacter.hpp"
 
-class Cat : public Animal
+class Cure : public AMateria
 {
-    private:
-        Brain *brain;
     public:
-        Cat();
-        Cat(const Cat &obj);
-        Cat &operator=(const Cat &obj);
-        ~Cat();
-        Brain* getBrain() const;
-        void makeSound() const;
+        Cure();
+        Cure(Cure const &src);
+        ~Cure();
+
+        Cure &operator=(Cure const &rhs);
+
+        AMateria* clone() const;
+        void use(ICharacter& target);
 };
 
 #endif

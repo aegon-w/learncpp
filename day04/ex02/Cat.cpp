@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 14:52:49 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/12/04 20:35:04 by xshel            ###   ########.fr       */
+/*   Updated: 2023/12/05 17:30:31 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,10 @@ Cat::~Cat()
 void Cat::makeSound() const
 {
     std::cout << "Meow" << std::endl;
+}
+
+
+Brain* Cat::getBrain() const
+{
+    return (this->brain);
 }

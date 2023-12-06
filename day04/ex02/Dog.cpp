@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 14:52:59 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/12/04 20:43:59 by xshel            ###   ########.fr       */
+/*   Updated: 2023/12/05 17:30:06 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,9 @@ Dog::~Dog()
 void Dog::makeSound() const
 {
     std::cout << "Woof" << std::endl;
+}
+
+Brain* Dog::getBrain() const
+{
+    return (this->brain);
 }

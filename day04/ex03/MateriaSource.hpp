@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 14:52:55 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/12/05 17:30:20 by m-boukel         ###   ########.fr       */
+/*   Created: 2023/12/05 14:50:27 by m-boukel          #+#    #+#             */
+/*   Updated: 2023/12/05 14:52:32 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-#define CAT_HPP
+#ifndef MATERIASOURCE_HPP
+# define MATERIASOURCE_HPP
 
-#include <iostream>
-#include "Animal.hpp"
-#include "Brain.hpp"
+# include <iostream>
+# include "IMateriaSource.hpp"
 
-class Cat : public Animal
+class MateriaSource : public IMateriaSource
 {
     private:
-        Brain *brain;
+        AMateria *materia[4];
     public:
-        Cat();
-        Cat(const Cat &obj);
-        Cat &operator=(const Cat &obj);
-        ~Cat();
-        Brain* getBrain() const;
-        void makeSound() const;
+        MateriaSource();
+        MateriaSource(MateriaSource const &src);
+        ~MateriaSource();
+
+        MateriaSource &operator=(MateriaSource const &rhs);
+
+        void learnMateria(AMateria*);
+        AMateria* createMateria(std::string const & type);
 };
+
+
 
 #endif
