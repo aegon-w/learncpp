@@ -6,7 +6,7 @@
 /*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:50:27 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/12/05 14:52:32 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/12/07 11:26:54 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ class MateriaSource : public IMateriaSource
         MateriaSource();
         MateriaSource(MateriaSource const &src);
         ~MateriaSource();
-
         MateriaSource &operator=(MateriaSource const &rhs);
 
         void learnMateria(AMateria*);

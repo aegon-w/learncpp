@@ -6,13 +6,12 @@
 /*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:25:08 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/12/05 14:25:28 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/12/07 11:24:03 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICHARACTER_HPP
 # define ICHARACTER_HPP
-
 # include <iostream>
 
 

@@ -6,7 +6,7 @@
 /*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 16:23:04 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/12/05 16:30:21 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/12/07 11:49:24 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,5 @@ std::string const & AMateria::getType() const
 
 void AMateria::use(ICharacter& target)
 {
-    std::cout << "default ICharacter" << std::endl;
+    std::cout << &target <<" ICharacter" << std::endl;
 }
