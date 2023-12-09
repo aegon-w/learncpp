@@ -6,7 +6,7 @@
 /*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 11:43:03 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/12/08 16:58:06 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/12/09 11:04:50 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int main()
     tmp = src->createMateria("ice");
     me->equip(tmp);
     tmp = src->createMateria("cure");
+    me->equip(tmp);
+    me->unequip(1);
     me->equip(tmp);
     tmp = src->createMateria("ice");
     me->equip(tmp);

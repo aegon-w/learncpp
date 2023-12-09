@@ -6,7 +6,7 @@
 /*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 14:53:09 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/12/07 09:55:24 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/12/09 12:11:25 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "Cat.hpp"
 #include "WrongCat.hpp"
 
-int main( void )
+int main()
 {
     const Animal* j = new Dog();
     const Animal* i = new Cat();

@@ -6,15 +6,14 @@
 /*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 11:44:12 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/12/07 11:48:04 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/12/09 11:02:27 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 
-Character::Character()
+Character::Character() : name("default")
 {
-    this->name = "default";
     for (int i = 0; i < 4; i++)
         this->inventory[i] = NULL;
 }
@@ -57,7 +56,9 @@ std::string const &Character::getName() const
 
 void Character::equip(AMateria *m)
 {
-    for (int i = 0; i < 4; i++)
+    int i;
+    
+    for (i = 0; i < 4; i++)
     {
         if (this->inventory[i] == NULL)
         {
@@ -65,6 +66,8 @@ void Character::equip(AMateria *m)
             break;
         }
     }
+    if (i == 4)
+        delete m;
 }
 
 void Character::unequip(int idx)

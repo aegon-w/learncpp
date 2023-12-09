@@ -6,7 +6,7 @@
 /*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 14:52:38 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/12/04 14:52:39 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/12/09 12:11:34 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ class Animal
         Animal();
         Animal(const Animal &obj);
         Animal &operator=(const Animal &obj);
-        // Animal(std::string type);
         virtual ~Animal();// pour que le destructeur de la classe enfant soit appele
         virtual void makeSound() const;
         std::string getType() const;

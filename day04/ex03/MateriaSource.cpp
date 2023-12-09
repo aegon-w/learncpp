@@ -6,7 +6,7 @@
 /*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 11:25:45 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/12/08 16:54:01 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/12/09 10:53:44 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ MateriaSource &MateriaSource::operator=(MateriaSource const &rhs)
 
 void MateriaSource::learnMateria(AMateria *m)
 {
-    for (int i = 0; i < 4; i++)
+    int i;
+
+    for (i = 0; i < 4; i++)
     {
         if (this->materia[i] == NULL)
         {
@@ -51,14 +53,18 @@ void MateriaSource::learnMateria(AMateria *m)
             break;
         }
     }
+    if (i == 4)
+        delete m;
 }
 
 AMateria *MateriaSource::createMateria(std::string const &type)
 {
-    for (int i = 0; i < 4; i++)
+    int i;
+    for (i = 0; i < 4; i++)
     {
         if (this->materia[i] != NULL && this->materia[i]->getType() == type)
             return (this->materia[i]->clone());
     }
+    std::cout << "Materia not found" << std::endl;
     return (NULL);
 }
