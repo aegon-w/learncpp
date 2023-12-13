@@ -1,0 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/13 15:58:05 by m-boukel          #+#    #+#             */
+/*   Updated: 2023/12/13 16:43:56 by m-boukel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "RobotomyRequestForm.hpp"
+
+RobotmyRequestForm::RobotmyRequestForm() {}
+
+RobotmyRequestForm::RobotmyRequestForm(std::string target) : AForm("RobotmyRequestForm", 72, 45), target(target) {}
+
+RobotmyRequestForm::RobotmyRequestForm(RobotmyRequestForm const &src) : AForm(src), target(src.target) {}
+
+RobotmyRequestForm::~RobotmyRequestForm() {}
+
+RobotmyRequestForm &RobotmyRequestForm::operator=(RobotmyRequestForm const &rhs)
+{
+    if (this != &rhs)
+        this->target = rhs.target;
+    return (*this);
+}
+
+void RobotmyRequestForm::execute(Bureaucrat const &executor) const
+{
+    if ( executor.getGrade() > this->getGradeToExecute() )
+        throw AForm::GradeTooLowException();
+    else {
+        static int  i;
+        if ( i % 2 == 0 )
+            std::cout << "BZZZZZT! " << this->target << " has been robotomized successfully 50% of the time" << std::endl;
+        else
+            std::cout << "Robotomy failed! " << this->target << " is still alive." << std::endl;
+    }      
+}
