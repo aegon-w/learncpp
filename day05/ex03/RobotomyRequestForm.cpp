@@ -6,11 +6,12 @@
 /*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:58:05 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/12/14 18:06:21 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/12/14 18:19:45 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
+#include <cstdlib>
 
 RobotmyRequestForm::RobotmyRequestForm() {}
 
