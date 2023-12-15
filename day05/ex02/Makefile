@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3
 NAME = exception
 SRC = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
 OBJ = $(SRC:.cpp=.o)
