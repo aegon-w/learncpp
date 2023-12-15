@@ -6,7 +6,7 @@
 /*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 12:14:32 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/12/13 16:43:59 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/12/15 11:25:37 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include "AForm.hpp"
+#include <cstdlib>
 
 class RobotmyRequestForm : public AForm
 {

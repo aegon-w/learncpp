@@ -6,7 +6,7 @@
 /*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 16:40:44 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/12/14 18:43:41 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/12/15 12:33:52 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,6 @@ int main( void )
         bureaucrat.executeForm(form1);
         std::cout << "\n--------------- Form 2 ( Robotomy ) ---------------" << std::endl;
         bureaucrat.signForm(form2);
-        bureaucrat.executeForm(form2);
-        bureaucrat.executeForm(form2);
-        bureaucrat.executeForm(form2);
         bureaucrat.executeForm(form2);
         std::cout << "\n--------------- Form 3 ( President ) ---------------" << std::endl;
         bureaucrat.signForm(form3);

@@ -6,7 +6,7 @@
 /*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:29:05 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/12/12 11:44:20 by m-boukel         ###   ########.fr       */
+/*   Updated: 2023/12/15 12:19:08 by m-boukel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ int main()
 {
     try 
     {
-        Bureaucrat b("Bob", 150);
+        Bureaucrat b("Bob", -1);
+        std::cout << b;
+        b.incrementGrade();
         std::cout << b;
         b.incrementGrade();
         std::cout << b;
