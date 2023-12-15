@@ -24,7 +24,6 @@ int main( void )
         Intern  someRandomIntern;
         AForm*   rrf;
 
-        // rrf = someRandomIntern.makeForm("robotomy", "Bender");
         rrf = someRandomIntern.makeForm("presidential pardon", "Bender");
         delete rrf;
     }
