@@ -6,7 +6,7 @@
 /*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 10:48:19 by xshel             #+#    #+#             */
-/*   Updated: 2023/12/20 10:50:36 by xshel            ###   ########.fr       */
+/*   Updated: 2023/12/20 11:47:40 by xshel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,65 @@
 #include <exception>
 
 template <typename T>
-
 class Array
 {
     private:
-        T *_array;
-        unsigned int _length;
-    public ::
-        Array();
-        Array(unsigned int n);
-        Array(Array const &src);
-        ~Array();
-        Array &operator=(Array const &src);
-        T &operator[](unsigned int n);
-        unsigned int size() const;
+        T *array;
+        unsigned int length;
+    public :
+        Array()
+        {
+            array = NULL;
+            length = 0;;
+        }
+        Array(unsigned int n)
+        {
+            array = new T[n];
+            length = n;   
+        };
+        Array(Array const &src)
+        {
+            array = new T[src.size()];
+            length = src.size();
+            for (unsigned int i = 0; i < src.size(); i++)
+                array[i] = src[i];
+        };
+        ~Array(){
+            delete [] array;
+        };
+
+        Array& operator=( const Array& rhs ) {
+        if ( this != &rhs ) {
+            delete [] array;
+            array = new T[rhs.size()];
+            length = rhs.length;
+            for ( unsigned int i( 0 ); i < length; i++ )
+                array[i] = rhs.array[i];
+            }
+            return *this;
+        }
+
+        T& operator[]( unsigned int i ) const {
+            if ( i >= length )
+                throw OutOfBoundsException();
+            return array[i];
+        }
+        
+        unsigned int size() const
+        {
+            return (length);
+        };
+
+        class OutOfBoundsException : public std::exception {
+            public:
+                virtual const char* what() const throw() {
+                    return "Out of bounds";
+                }
+        };
+
 };
 
-template <typename T>
-std::ostream &operator<<(std::ostream &o, Array<T> const &src);
+
 
 
 #endif
