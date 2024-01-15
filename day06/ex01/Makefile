@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+         #
+#    By: kali <kali@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 14:04:22 by m-boukel          #+#    #+#              #
-#    Updated: 2024/01/14 11:26:48 by m-boukel         ###   ########.fr        #
+#    Updated: 2024/01/15 02:59:06 by kali             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3
 NAME = cast
 SRC = main.cpp Serialization.cpp
 OBJ = $(SRC:.cpp=.o)

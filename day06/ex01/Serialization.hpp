@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Serialization.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m-boukel <m-boukel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 14:28:55 by m-boukel          #+#    #+#             */
-/*   Updated: 2023/12/18 15:31:05 by m-boukel         ###   ########.fr       */
+/*   Updated: 2024/01/15 03:00:08 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ struct Data
 
 uintptr_t serialize(Data* ptr);
 Data *deserialize(uintptr_t data);
-
 
 
 #endif
