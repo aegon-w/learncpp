@@ -6,7 +6,7 @@
 /*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 14:28:55 by m-boukel          #+#    #+#             */
-/*   Updated: 2024/01/15 03:00:08 by kali             ###   ########.fr       */
+/*   Updated: 2024/01/15 03:12:39 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 
 #include <iostream>
-#include <cinttypes>
 #include<cstdlib>
+#include <stdint.h>
 
 struct Data
 {
