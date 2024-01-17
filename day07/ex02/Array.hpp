@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xshel <xshel@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 10:48:19 by xshel             #+#    #+#             */
-/*   Updated: 2023/12/20 11:47:40 by xshel            ###   ########.fr       */
+/*   Updated: 2024/01/17 03:35:41 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class Array
         Array()
         {
             array = NULL;
-            length = 0;;
+            length = 0;
         }
         Array(unsigned int n)
         {
@@ -46,7 +46,7 @@ class Array
         };
 
         Array& operator=( const Array& rhs ) {
-        if ( this != &rhs ) {
+            if ( this != &rhs ) {
             delete [] array;
             array = new T[rhs.size()];
             length = rhs.length;
