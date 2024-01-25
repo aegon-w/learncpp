@@ -3,26 +3,26 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: xshel <xshel@student.42.fr>                +#+  +:+       +#+         #
+#    By: kali <kali@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/20 09:57:27 by xshel             #+#    #+#              #
-#    Updated: 2023/12/20 10:00:45 by xshel            ###   ########.fr        #
+#    Created: 2024/01/21 05:50:01 by kali              #+#    #+#              #
+#    Updated: 2024/01/22 07:12:10 by kali             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3
-NAME = template
-SRC = main.cpp 
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3
+NAME = container
+SRC = main.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 %.o: %.cpp
-	$(CC) $(FLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -rf $(OBJ)
