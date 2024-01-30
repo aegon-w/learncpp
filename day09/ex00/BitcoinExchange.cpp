@@ -6,7 +6,7 @@
 /*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 09:29:37 by kali              #+#    #+#             */
-/*   Updated: 2024/01/30 10:01:00 by kali             ###   ########.fr       */
+/*   Updated: 2024/01/30 10:13:59 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ BitcoinExchange::BitcoinExchange(std::string const &file, std::string const &inf
 {
     this->_dataFile = file;
     this->_inputFile = infile;
-    this->_outputFile = infile + ".output";
     this->parseCSV(file);
     this->parseInput(infile);
 }
@@ -43,7 +42,6 @@ BitcoinExchange &BitcoinExchange::operator=(BitcoinExchange const &rhs)
         this->_data = rhs._data;
         this->_headers = rhs._headers;
         this->_inputFile = rhs._inputFile;
-        this->_outputFile = rhs._outputFile;
     }
     return *this;
 }
@@ -59,25 +57,35 @@ int BitcoinExchange::checkdate(std::string const &date)
     if (date[4] != '-' || date[7] != '-')
         return 1;
     year = date.substr(0, 4);
-    std::cout << year << std::endl;
     month = date.substr(5, 2);
-    std::cout << month << std::endl;
     day = date.substr(8, 2);
-    std::cout << day << std::endl;
     if (atoi(year.c_str()) < 2009 || atoi(year.c_str()) > 2022)
+    {
+        std::cout << "Error: bad input =>" << date << std::endl;
         return 1;
+    }
     if (atoi(month.c_str()) < 1 || atoi(month.c_str()) > 12)
+    {
+        std::cout << "Error: bad input =>" << date << std::endl;
         return 1;
+    }
     if (atoi(day.c_str()) < 1 || atoi(day.c_str()) > 31)
+    {
+        std::cout << "Error: bad input =>" << date << std::endl;
         return 1;
+    }
     return 0;
 }
 
 int BitcoinExchange::checkprice(std::string const &price)
 {
     int n = atoi(price.c_str());
-    if (n < 0 || n > 10000)
-        return 1;
+    if (n < 0)
+        {std::cout << "Error: not a positive number" << std::endl;
+        return 1;}
+    if (n > 100000)
+        {std::cout << "Error: too large a number." << std::endl;
+        return 1;}
     return 0;
 }
 
@@ -161,28 +169,22 @@ void    BitcoinExchange::parseInput(std::string const &_file)
             key = headers[i];
             value = cells[i];
             //chexk date and value
-            std::cout << key << " " << value  << "/// "<< std::endl;
+            // std::cout << key << " " << value  << "/// "<< std::endl;
             value.erase(std::remove(value.begin(), value.end(), ' '), value.end());
             if (i % 2 == 0)
-            {
-                if (this->checkdate(value))
-                {
-                    std::cout << value << std::endl;
-                    std::cout << "Error: invalid date" << std::endl;
-                    return ;
-                }
-            }
+                {if (this->checkdate(value))
+                    std::cout << "Error: invalid date" << std::endl;}
             else
-            {
-                if (this->checkprice(value))
-                {
-                    std::cout << "Error: invalid price" << std::endl;
-                    return ;
-                }
-            }
+                {if (this->checkprice(value))
+                    std::cout << "Error: invalid price" << std::endl;}
         }
         cells.clear();
     }
     
     ifs.close();
+}
+
+float BitcoinExchange::run()
+{
+    
 }

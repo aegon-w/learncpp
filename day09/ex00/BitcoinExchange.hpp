@@ -6,7 +6,7 @@
 /*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 09:26:58 by kali              #+#    #+#             */
-/*   Updated: 2024/01/30 09:54:19 by kali             ###   ########.fr       */
+/*   Updated: 2024/01/30 10:13:27 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ class BitcoinExchange
         std::vector<std::string> _headers;
         std::string _dataFile;
         std::string _inputFile;
-        std::string _outputFile;
     public:
         BitcoinExchange(std::string const &file, std::string const &infile);
         ~BitcoinExchange(void);
@@ -41,6 +40,7 @@ class BitcoinExchange
         void parseInput(std::string const &infile);
         int checkdate(std::string const &date);
         int checkprice(std::string const &price);
+        float run();
 };
 
 #endif
