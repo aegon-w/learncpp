@@ -6,7 +6,7 @@
 /*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 09:29:37 by kali              #+#    #+#             */
-/*   Updated: 2024/01/30 10:13:59 by kali             ###   ########.fr       */
+/*   Updated: 2024/02/03 08:00:50 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ BitcoinExchange &BitcoinExchange::operator=(BitcoinExchange const &rhs)
 {
     if (this != &rhs)
     {
-        this->_nbDays = rhs._nbDays;
         this->_data = rhs._data;
         this->_headers = rhs._headers;
         this->_inputFile = rhs._inputFile;
@@ -46,40 +45,55 @@ BitcoinExchange &BitcoinExchange::operator=(BitcoinExchange const &rhs)
     return *this;
 }
 
+bool isleap(int year)
+{
+    if (year % 4 != 0)
+        return false;
+    else if (year % 100 != 0)
+        return true;
+    else if (year % 400 != 0)
+        return false;
+    else
+        return true;
+}
+
+std::string int_to_string(int n)
+{
+    std::stringstream ss;
+    ss << n;
+    return (ss.str());
+}
+
 int BitcoinExchange::checkdate(std::string const &date)
 {
     std::string year;
     std::string month;
     std::string day;
+    std::string tmp;
     
-    if (date.length() != 10)
+    if (date.size() != 10)
         return 1;
-    if (date[4] != '-' || date[7] != '-')
+    if (!strptime(date.c_str(), "%Y-%m-%d", &this->_tm))
         return 1;
-    year = date.substr(0, 4);
-    month = date.substr(5, 2);
-    day = date.substr(8, 2);
-    if (atoi(year.c_str()) < 2009 || atoi(year.c_str()) > 2022)
+    year = int_to_string(this->_tm.tm_year + 1900);
+    month = int_to_string(this->_tm.tm_mon + 1);
+    day = int_to_string(this->_tm.tm_mday);
+    if (this->_tm.tm_mon + 1 == 2)
     {
-        std::cout << "Error: bad input =>" << date << std::endl;
-        return 1;
-    }
-    if (atoi(month.c_str()) < 1 || atoi(month.c_str()) > 12)
-    {
-        std::cout << "Error: bad input =>" << date << std::endl;
-        return 1;
-    }
-    if (atoi(day.c_str()) < 1 || atoi(day.c_str()) > 31)
-    {
-        std::cout << "Error: bad input =>" << date << std::endl;
-        return 1;
+        if (isleap(this->_tm.tm_year + 1900))
+        {
+            if (this->_tm.tm_mday > 29)
+                return 1;
+        }
+        else if (this->_tm.tm_mday > 28)
+            return 1;
     }
     return 0;
 }
 
 int BitcoinExchange::checkprice(std::string const &price)
 {
-    int n = atoi(price.c_str());
+    long  n = strtol(price.c_str(), NULL, 10);
     if (n < 0)
         {std::cout << "Error: not a positive number" << std::endl;
         return 1;}
@@ -93,10 +107,6 @@ void BitcoinExchange::parseCSV(std::string const &file)
 {
     std::ifstream ifs(file.c_str());
     std::string line;
-    std::string cell;
-    std::vector<std::string> cells;
-    std::vector<std::string> headers;
-    std::map<std::string, std::vector<std::string> > data;
     std::string key;
     std::string value;
     
@@ -105,42 +115,47 @@ void BitcoinExchange::parseCSV(std::string const &file)
         std::cout << "Error: could not open file" << std::endl;
         return ;
     }
-    
-    //get headers
-    std::getline(ifs, line);
-    std::stringstream ss(line);
-    while (std::getline(ss, cell, ','))
-    {
-        headers.push_back(cell);
-    }
-        
-    //get data
+    getline(ifs, line);
     while (std::getline(ifs, line))
     {
         std::stringstream ss(line);
-        while (std::getline(ss, cell, ','))
-            cells.push_back(cell);
-        for (int i = 0; i < (int)cells.size(); i++)
-        {
-            key = headers[i];
-            value = cells[i];
-            data[key].push_back(value);
-            // std::cout << key << " " << value  << "/// "<< std::endl;
-        }
-        cells.clear();
+        std::getline(ss, key, ',');
+        std::getline(ss, value, ',');
+        this->_data[key].push_back(value);
     }
-    
     ifs.close();
 }
 
+std::string BitcoinExchange::checkneardate(std::string & date)
+{
+        std::string nearestDate;
+        int minDiff = 10000;
+        for (std::map<std::string, std::vector<std::string> >::iterator it = _data.begin(); it != _data.end(); ++it) {
+            std::string dateKey = it->first;
+
+            int yearInput, monthInput, dayInput;
+            int yearKey, monthKey, dayKey;
+
+            std::stringstream ssInput(date);
+            ssInput >> yearInput >> monthInput >> dayInput;
+            std::stringstream ssKey(dateKey);
+            ssKey >> yearKey >> monthKey >> dayKey;
+
+            int diff = std::abs(yearInput - yearKey) * 365 +
+                        std::abs(monthInput - monthKey) * 30 +
+                        std::abs(dayInput - dayKey);
+
+            if (diff < minDiff) {
+                minDiff = diff;
+                nearestDate = dateKey;
+            }
+    }
+    return nearestDate;
+}
 void    BitcoinExchange::parseInput(std::string const &_file)
 {
     std::ifstream ifs(_file.c_str());
     std::string line;
-    std::string cell;
-    std::vector<std::string> cells;
-    std::vector<std::string> headers;
-    std::map<std::string, std::vector<std::string> > data;
     std::string key;
     std::string value;
     
@@ -150,41 +165,44 @@ void    BitcoinExchange::parseInput(std::string const &_file)
         return ;
     }
     
-    //get headers
-    std::getline(ifs, line);
-    std::stringstream ss(line);
-    while (std::getline(ss, cell, '|'))
-    {
-        headers.push_back(cell);
-    }
-        
-    //get data
+    getline(ifs, line);
     while (std::getline(ifs, line))
     {
         std::stringstream ss(line);
-        while (std::getline(ss, cell, '|'))
-            cells.push_back(cell);
-        for (int i = 0; i < (int)cells.size(); i++)
-        {   
-            key = headers[i];
-            value = cells[i];
-            //chexk date and value
-            // std::cout << key << " " << value  << "/// "<< std::endl;
-            value.erase(std::remove(value.begin(), value.end(), ' '), value.end());
-            if (i % 2 == 0)
-                {if (this->checkdate(value))
-                    std::cout << "Error: invalid date" << std::endl;}
-            else
-                {if (this->checkprice(value))
-                    std::cout << "Error: invalid price" << std::endl;}
+        if (line.find('|') == std::string::npos)
+        {
+            std::cout << "Error: bad input => " << line << std::endl;
+            continue;
         }
-        cells.clear();
+        std::getline(ss, key, '|');
+        std::getline(ss, value, '|');
+        key.erase(std::remove(key.begin(), key.end(), ' '), key.end());
+        value.erase(std::remove(value.begin(), value.end(), ' '), value.end());
+        if(checkdate(key))
+        {
+            std::cout << "Error: bad input => " << key << std::endl;
+        }
+        try
+        {
+            if(!checkprice(value))
+            {
+                if (this->_data.find(key) != this->_data.end())
+                {
+                    float price = atof(this->_data[key][0].c_str()) * atof(value.c_str());
+                    std::cout << key << " => " << value << " = " << price << std::endl;
+                    continue;
+                }
+                std::string near = checkneardate(key);
+                float price = atof(this->_data[near][0].c_str()) * atof(value.c_str());
+                std::cout << near << " => " << value << " = " << price << std::endl;
+            }
+            
+        }
+        catch(const std::exception& e)
+        {
+            std::cerr << "Error" << '\n';
+        }
     }
-    
-    ifs.close();
-}
 
-float BitcoinExchange::run()
-{
-    
+    ifs.close();
 }

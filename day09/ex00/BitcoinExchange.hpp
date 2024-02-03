@@ -6,7 +6,7 @@
 /*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 09:26:58 by kali              #+#    #+#             */
-/*   Updated: 2024/01/30 10:13:27 by kali             ###   ########.fr       */
+/*   Updated: 2024/02/03 07:19:16 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,20 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
-#include <string>
+#include <cstring>
 #include <cstdlib>
 #include <algorithm>
 
 class BitcoinExchange
 {
     private:
-        int _nbDays;
+        int _nDays;
         std::map<std::string, std::vector<std::string> > _data;
         std::vector<std::string> _headers;
         std::string _dataFile;
         std::string _inputFile;
+        struct  tm _tm;
+        
     public:
         BitcoinExchange(std::string const &file, std::string const &infile);
         ~BitcoinExchange(void);
@@ -40,7 +42,7 @@ class BitcoinExchange
         void parseInput(std::string const &infile);
         int checkdate(std::string const &date);
         int checkprice(std::string const &price);
-        float run();
+        std::string checkneardate(std::string & date);
 };
 
 #endif
