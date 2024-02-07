@@ -6,7 +6,7 @@
 /*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 05:34:39 by kali              #+#    #+#             */
-/*   Updated: 2024/02/07 16:36:57 by kali             ###   ########.fr       */
+/*   Updated: 2024/02/07 16:46:08 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,40 @@ void PmergeM::run()
 //     std::cout << std::endl;
 // }
 
+void merge_and_print(std::queue<int>& main, std::queue<int>& pend) {
+    std::queue<int> merged;
+
+    while (!pend.empty()) {
+        int element = pend.front();
+        pend.pop();
+
+        // Use a loop to find the insertion point within the main queue
+        int i = 0;
+        bool inserted = false;
+        while (!main.empty() && !inserted) {
+            if (main.front() < element) {
+                merged.push(main.front());
+                main.pop();
+                i++;
+            } else {
+                inserted = true;
+            }
+        }
+        merged.push(element);
+
+        // Push back remaining elements from main
+        while (!main.empty()) {
+            merged.push(main.front());
+            main.pop();
+        }
+    }
+    // Print the merged queue
+    while (!merged.empty()) {
+        std::cout << merged.front() << " ";
+        merged.pop();
+    }
+    std::cout << std::endl;
+}
 
 void PmergeM::ford_johnson(std::queue<int> queue)
 {
@@ -89,4 +123,5 @@ void PmergeM::ford_johnson(std::queue<int> queue)
         pend.push(pairs[i].second);
     }
     //merge main and pend using lower bound  
+    merge_and_print(main, pend);
 }
