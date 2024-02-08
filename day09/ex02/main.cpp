@@ -6,7 +6,7 @@
 /*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:12:04 by kali              #+#    #+#             */
-/*   Updated: 2024/02/07 17:02:33 by kali             ###   ########.fr       */
+/*   Updated: 2024/02/08 07:57:21 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 int main(int ac, char **av)
 {
     std::deque<int> _deque;
-    std::list<int> _stack;
-    std::vector<int> _res;
+    std::vector<int> _vec;
     int flag = 0;
     if (ac < 2)
     {
@@ -30,16 +29,14 @@ int main(int ac, char **av)
             flag = 1;
         }
         _deque.push_back(atoi(av[i]));
-        _stack.push_back(atoi(av[i]));
-        _res.push_back(atoi(av[i]));
+        _vec.push_back(atoi(av[i]));
 
     }
     if (flag == 1)
     {
             _deque.push_back(-1);
-            _stack.push_back(-1);
-            _res.push_back(-1);
+            _vec.push_back(-1);
     }
-    PmergeM pmergeM(_deque, _stack, _res);
+    PmergeM pmergeM(_deque, _vec);
     pmergeM.run();
 }
