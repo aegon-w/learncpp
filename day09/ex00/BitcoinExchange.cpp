@@ -6,7 +6,7 @@
 /*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 09:29:37 by kali              #+#    #+#             */
-/*   Updated: 2024/02/03 08:00:50 by kali             ###   ########.fr       */
+/*   Updated: 2024/02/08 07:46:16 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ std::string BitcoinExchange::checkneardate(std::string & date)
 {
         std::string nearestDate;
         int minDiff = 10000;
-        for (std::map<std::string, std::vector<std::string> >::iterator it = _data.begin(); it != _data.end(); ++it) {
+        for (std::map<std::string, std::list<std::string> >::iterator it = _data.begin(); it != _data.end(); ++it) {
             std::string dateKey = it->first;
 
             int yearInput, monthInput, dayInput;
@@ -188,13 +188,13 @@ void    BitcoinExchange::parseInput(std::string const &_file)
             {
                 if (this->_data.find(key) != this->_data.end())
                 {
-                    float price = atof(this->_data[key][0].c_str()) * atof(value.c_str());
+                    float price = atof(this->_data[key].front().c_str()) * atof(value.c_str());
                     std::cout << key << " => " << value << " = " << price << std::endl;
                     continue;
                 }
                 std::string near = checkneardate(key);
-                float price = atof(this->_data[near][0].c_str()) * atof(value.c_str());
-                std::cout << near << " => " << value << " = " << price << std::endl;
+                float price = atof(this->_data[near].front().c_str()) * atof(value.c_str());
+                std::cout << key << " => " << value << " = " << price << std::endl;
             }
             
         }

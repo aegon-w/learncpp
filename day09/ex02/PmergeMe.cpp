@@ -6,7 +6,7 @@
 /*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 05:34:39 by kali              #+#    #+#             */
-/*   Updated: 2024/02/07 17:30:40 by kali             ###   ########.fr       */
+/*   Updated: 2024/02/08 07:00:00 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,15 @@ void merge_and_print(std::deque<int>& main, std::deque<int>& pend) {
     // std::cout << std::endl;
 }
 
+// void sortpairs(std::pair<int, int>& pair, int size) {
+//     if (pair.first < pair.second) {
+//         std::swap(pair.first, pair.second);
+//     }
+//     if (size > 1)
+//         sortpairs(pair, size / 2);
+
+// }
+
 void PmergeM::ford_johnson(std::deque<int> deque)
 {
     //divide to pairs
@@ -105,9 +114,10 @@ void PmergeM::ford_johnson(std::deque<int> deque)
         pairs[i].second = deque.front();
         deque.pop_front();
     }
-    //sort pairs from highest to lowest
+    //sort pairs from highest to lowest recursively
     for (int i = 0; i < size / 2; i++)
     {
+        // sortpairs(pairs[i], size / 2);
         if (pairs[i].first < pairs[i].second)
             std::swap(pairs[i].first, pairs[i].second);
     }
