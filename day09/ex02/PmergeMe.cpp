@@ -6,7 +6,7 @@
 /*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 05:34:39 by kali              #+#    #+#             */
-/*   Updated: 2024/02/08 12:22:44 by kali             ###   ########.fr       */
+/*   Updated: 2024/02/08 15:38:03 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,27 @@ void merge_and_print(std::deque<int>& main, std::deque<int>& pend) {
     std::cout << std::endl;
 }
 
+void    sortrec(std::pair<int, int> *pairs, int size)
+{
+    if (size <= 1)
+        return;
+    sortrec(pairs, size / 2);
+    sortrec(pairs + size / 2, size - size / 2);
+    std::pair<int, int> *tmp = new std::pair<int, int>[size];
+    int i = 0;
+    int j = size / 2;
+    for (int k = 0; k < size; k++)
+    {
+        if (i < size / 2 && (j == size || pairs[i].first > pairs[j].first))
+            tmp[k] = pairs[i++];
+        else
+            tmp[k] = pairs[j++];
+    }
+    for (int k = 0; k < size; k++)
+        pairs[k] = tmp[k];
+    delete[] tmp;
+}
+
 void PmergeM::ford_johnson(std::deque<int> deque)
 {
     //divide to pairs
@@ -110,7 +131,8 @@ void PmergeM::ford_johnson(std::deque<int> deque)
             std::swap(pairs[i].first, pairs[i].second);
     }
    // Sort pairs in descending order of the first element
-    std::sort(pairs, pairs + size / 2, std::greater<std::pair<int, int> >());
+    // std::sort(pairs, pairs + size / 2, std::greater<std::pair<int, int> >());
+    sortrec(pairs, size / 2);
     //divide pairs in two groups (main and pend)
     std::deque<int> main;
     std::deque<int> pend;
@@ -144,6 +166,8 @@ void merge_and_printv(std::vector<int>& main, std::vector<int>& pend) {
     std::cout << std::endl;
 }
 
+
+
 void PmergeM::ford_johnsonv(std::vector<int> vector)
 {
     //divide to pairs
@@ -165,7 +189,9 @@ void PmergeM::ford_johnsonv(std::vector<int> vector)
             std::swap(pairs[i].first, pairs[i].second);
     }
    // Sort pairs in descending order of the first element
-    std::sort(pairs, pairs + size / 2, std::greater<std::pair<int, int> >());
+    // std::sort(pairs, pairs + size / 2, std::greater<std::pair<int, int> >());
+    //sort pairs from highest to lowest recursively
+    sortrec(pairs, size / 2);
     //divide pairs in two groups (main and pend)
     std::vector<int> main;
     std::vector<int> pend;
@@ -177,3 +203,4 @@ void PmergeM::ford_johnsonv(std::vector<int> vector)
     //merge main and pend using lower bound  
     merge_and_printv(main, pend);
 }
+
