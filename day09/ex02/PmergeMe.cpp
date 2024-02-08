@@ -6,7 +6,7 @@
 /*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 05:34:39 by kali              #+#    #+#             */
-/*   Updated: 2024/02/08 11:48:00 by kali             ###   ########.fr       */
+/*   Updated: 2024/02/08 12:22:44 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@ PmergeM::PmergeM()
 {
 }
 
-PmergeM::PmergeM(std::deque<int> deque, std::vector<int> res)
+PmergeM::PmergeM(std::deque<int> deque, std::vector<int> res, int ac)
 {
     _deque = deque;
     _res = res;
+    this->ac = ac;
 }
 
 PmergeM::~PmergeM()
@@ -44,8 +45,20 @@ PmergeM &PmergeM::operator=(const PmergeM &rhs)
 void PmergeM::run()
 {
     // _print();
+    clock_t start, end;
+    start = clock();
     ford_johnson(_deque);
+    end = clock();
+    std::cout << end - start << std::endl;
+    this->timeq = (double)(end - start) / 1000000.0 ;
+    start = clock();
     ford_johnsonv(_res);
+    end = clock();
+    std::cout << end - start << std::endl;
+
+    this->timev = (double)(end - start) / 1000000.0 ;
+    std::cout << "Time to process a range of " << this->ac - 1 <<" elements with std::[queue] :"<< this->timeq  << " in us"<< std::endl;
+    std::cout << "Time to process a range of " << this->ac - 1 <<" elements with std::[vector] :"<< this->timev  << " in us"<< std::endl;
 }
 // 3 5 9 8 4
 
@@ -67,6 +80,7 @@ void merge_and_print(std::deque<int>& main, std::deque<int>& pend) {
 
     if (main.back() == -1)
         main.pop_back();
+    std::cout << "After(deque): ";
     while (!main.empty())
     {
         std::cout << main.front() << " ";
@@ -121,6 +135,7 @@ void merge_and_printv(std::vector<int>& main, std::vector<int>& pend) {
 
     if (main.back() == -1)
         main.pop_back();
+    std::cout << "After(vector): ";
     while (!main.empty())
     {
         std::cout << main.front() << " ";
