@@ -6,7 +6,7 @@
 /*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 05:34:39 by kali              #+#    #+#             */
-/*   Updated: 2024/02/08 15:38:03 by kali             ###   ########.fr       */
+/*   Updated: 2024/02/13 05:09:03 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,28 +44,21 @@ PmergeM &PmergeM::operator=(const PmergeM &rhs)
 
 void PmergeM::run()
 {
-    // _print();
     clock_t start, end;
     start = clock();
     ford_johnson(_deque);
-    end = clock();
-    std::cout << end - start << std::endl;
+    end = clock();;
     this->timeq = (double)(end - start) / 1000000.0 ;
     start = clock();
     ford_johnsonv(_res);
     end = clock();
-    std::cout << end - start << std::endl;
-
     this->timev = (double)(end - start) / 1000000.0 ;
     std::cout << "Time to process a range of " << this->ac - 1 <<" elements with std::[queue] :"<< this->timeq  << " in us"<< std::endl;
     std::cout << "Time to process a range of " << this->ac - 1 <<" elements with std::[vector] :"<< this->timev  << " in us"<< std::endl;
 }
-// 3 5 9 8 4
-
-
 
 bool compare(int a, int b) {
-    return a > b; // Reversing the comparison logic for decreasing order
+    return a > b;
 }
 
 void merge_and_print(std::deque<int>& main, std::deque<int>& pend) {
@@ -73,7 +66,6 @@ void merge_and_print(std::deque<int>& main, std::deque<int>& pend) {
     while (!pend.empty()) {
         int element = pend.front();
         pend.pop_front();
-        // Use lower_bound to find the lower bound (insertion point) for the element
         std::deque<int>::iterator lower_bound_it = std::lower_bound(main.begin(), main.end(), element, compare);
         main.insert(lower_bound_it, element);
     }
@@ -112,7 +104,6 @@ void    sortrec(std::pair<int, int> *pairs, int size)
 
 void PmergeM::ford_johnson(std::deque<int> deque)
 {
-    //divide to pairs
     std::deque<int> res;
     int size = deque.size();
     std::pair<int, int> pairs[size / 2];
@@ -123,17 +114,12 @@ void PmergeM::ford_johnson(std::deque<int> deque)
         pairs[i].second = deque.front();
         deque.pop_front();
     }
-    //sort pairs from highest to lowest recursively
     for (int i = 0; i < size / 2; i++)
     {
-        // sortpairs(pairs[i], size / 2);
         if (pairs[i].first < pairs[i].second)
             std::swap(pairs[i].first, pairs[i].second);
     }
-   // Sort pairs in descending order of the first element
-    // std::sort(pairs, pairs + size / 2, std::greater<std::pair<int, int> >());
     sortrec(pairs, size / 2);
-    //divide pairs in two groups (main and pend)
     std::deque<int> main;
     std::deque<int> pend;
     for (int i = 0; i < size / 2; i++)
@@ -141,7 +127,6 @@ void PmergeM::ford_johnson(std::deque<int> deque)
         main.push_back(pairs[i].first);
         pend.push_back(pairs[i].second);
     }
-    //merge main and pend using lower bound  
     merge_and_print(main, pend);
 }
 
@@ -150,7 +135,6 @@ void merge_and_printv(std::vector<int>& main, std::vector<int>& pend) {
     while (!pend.empty()) {
         int element = pend.front();
         pend.erase(pend.begin());
-        // Use lower_bound to find the lower bound (insertion point) for the element
         std::vector<int>::iterator lower_bound_it = std::lower_bound(main.begin(), main.end(), element, compare);
         main.insert(lower_bound_it, element);
     }
@@ -166,11 +150,8 @@ void merge_and_printv(std::vector<int>& main, std::vector<int>& pend) {
     std::cout << std::endl;
 }
 
-
-
 void PmergeM::ford_johnsonv(std::vector<int> vector)
 {
-    //divide to pairs
     std::vector<int> res;
     int size = vector.size();
     std::pair<int, int> pairs[size / 2];
@@ -181,18 +162,12 @@ void PmergeM::ford_johnsonv(std::vector<int> vector)
         pairs[i].second = vector.front();
         vector.erase(vector.begin());
     }
-    //sort pairs from highest to lowest recursively
     for (int i = 0; i < size / 2; i++)
     {
-        // sortpairs(pairs[i], size / 2);
         if (pairs[i].first < pairs[i].second)
             std::swap(pairs[i].first, pairs[i].second);
     }
-   // Sort pairs in descending order of the first element
-    // std::sort(pairs, pairs + size / 2, std::greater<std::pair<int, int> >());
-    //sort pairs from highest to lowest recursively
     sortrec(pairs, size / 2);
-    //divide pairs in two groups (main and pend)
     std::vector<int> main;
     std::vector<int> pend;
     for (int i = 0; i < size / 2; i++)
@@ -200,7 +175,6 @@ void PmergeM::ford_johnsonv(std::vector<int> vector)
         main.push_back(pairs[i].first);
         pend.push_back(pairs[i].second);
     }
-    //merge main and pend using lower bound  
     merge_and_printv(main, pend);
 }
 
