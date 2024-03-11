@@ -52,7 +52,9 @@ int operate(std::string op, std::stack<int> &stack)
     else if (op == "*")
         return b * a;
     else if (op == "/")
+    { //forgot to throw if a == 0 
         return b / a;
+    }
     else if (op == "%")
         return b % a;
     return 0;
